@@ -2,7 +2,9 @@ import math
 
 
 def fib(n):
-    """Calculate the nth term in the Fibonacci sequence"""
+    """
+    Calculate the nth term in the Fibonacci sequence
+    """
     if n < 1:
         return 'ERROR'
     elif n in [1, 2]:
@@ -12,7 +14,9 @@ def fib(n):
 
     
 def is_prime(n):
-    """check if integer n is a prime"""
+    """
+    check if integer n is a prime
+    """
     n = abs(int(n))
     if n < 2:
         return False
@@ -27,8 +31,10 @@ def is_prime(n):
 
 
 def max_prime_factor(n):
-    """Iterate through all numbers between 1 and the square root of n, check to see if that number is prime,
-    check if that number is a factor of n, set that number equal to max prime"""
+    """
+    Iterate through all numbers between 1 and the square root of n, check to see if that number is prime,
+    check if that number is a factor of n, set that number equal to max prime
+    """
     max_prime = 0
     for i in range(1, int(n**0.5)+1):
         if is_prime(i) and n % i == 0:
@@ -37,6 +43,9 @@ def max_prime_factor(n):
 
 
 def check_for_palindrome(n):
+    """
+    Take in a number, then check if that number is equal to the reverse of that number
+    """
     if n == int(str(n)[::-1]):
         return True
     else:
@@ -44,6 +53,11 @@ def check_for_palindrome(n):
 
 
 def num_factors(n):
+    """
+    Take in a number, iterate through all numbers between 1 and 1 less than the square root of the given number.
+    If the current iteration is a factor of the given number, add 2 to the count of factors for the 
+    multiplicand(i.e. current iteration) and multiplier(i.e. given number divided by multiplicand).
+    """
     factors = 0
     for i in range(1, int(math.ceil(math.sqrt(n)))):
         if n % i == 0:
@@ -52,6 +66,12 @@ def num_factors(n):
 
 
 def collatz_sequence(n):
+    """
+    Take in a number and calculate the full collatz sequence for that number. Then, return the length of that sequence.
+    
+    Collatz sequence: if the current number is even, divide it by 2; if the current number is odd, multiply it by 3 and add 1;
+    stop when the current number equals 1.
+    """
     current_num = n
     sequence_length = 0
     while current_num != 1:
@@ -68,6 +88,10 @@ def collatz_sequence(n):
 
 
 def factorial(n):
+    """
+    Calculate the value of a factorial without using recursion. In a simple function like this, 
+    the speed of automatic allocation does not outweigh the slowness of recursive calculation.
+    """
     total_factorial = 1
     for i in range(n, 1, -1):
         total_factorial *= i
@@ -76,6 +100,11 @@ def factorial(n):
 
 
 def recursive_factorial(n):
+    """
+    Calculate the value of a factorial using recursion. Despite being slower than iterative calculation, 
+    the code is cleaner and easier to follow. 
+    When the calculation time is not significantly different, recursion is used.
+    """
     if n <= 1:
         return 1
     else:
@@ -83,6 +112,10 @@ def recursive_factorial(n):
 
 
 def fib_no_recursion(n):
+    """
+    Calculate the fibonacci sequence using iteration instead of recursion. 
+    See factorial docstring for reasoning on iteration over recursion.
+    """
     nth_num = 1
     a = 0
     previous_num = 0
@@ -98,11 +131,17 @@ def fib_no_recursion(n):
 
 
 def single_permutation(n, k):
+    """
+    Calculate the number of permutations for a single value of (n,k).
+    """
     num_permutations = (recursive_factorial(n) / recursive_factorial(n - k))
     return num_permutations
 
 
 def permutations(n, k):
+    """
+    Calculate the total number of permutations for a varying value of n.
+    """
     num_permutations = 0
     if k == 0:
         num_permutations = factorial(n)
@@ -114,6 +153,9 @@ def permutations(n, k):
 
 
 def single_combination(n, k):
+    """
+    Calculate the number of combinations for a single value of (n,k).
+    """
     num_combinations = 0
     if k == 0:
         num_combinations = 1
@@ -124,6 +166,9 @@ def single_combination(n, k):
 
 
 def combinations(n, k):
+    """
+    Calculate the total number of combinations for a varying value of n.
+    """
     num_combinations = 0
     if k == 0:
         num_combinations = 1
@@ -135,6 +180,9 @@ def combinations(n, k):
 
 
 def get_factors(n):
+    """
+    Take in a number, find all the factors of the given number and return a list of the factors.
+    """
     factors_list = [1]
     for i in range(2, (n//2) + 1):
         if n % i == 0:
